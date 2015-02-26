@@ -107,31 +107,34 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # TMUX setup
-SESSION=$USER
 
-tmux -2 new-session -d -s $SESSION
+if [[ ! $TERM =~ screen ]]; then
+    SESSION=$USER
 
-tmux new-window -t $SESSION:1 -n 'Grunt'
-tmux split-window -v
-tmux select-pane -t 0
-tmux split-window -h
+    tmux -2 new-session -d -s $SESSION
 
-tmux select-pane -t 1
-tmux send-keys "cd /vagrant/src/webclient" C-m
-tmux send-keys "grunt test" C-m
+    tmux new-window -t $SESSION:1 -n 'Grunt'
+    tmux split-window -v
+    tmux select-pane -t 0
+    tmux split-window -h
 
-tmux select-pane -t 2
-tmux send-keys "cd /vagrant/src/webclient" C-m
+    tmux select-pane -t 1
+    tmux send-keys "cd /vagrant/src/webclient" C-m
+    tmux send-keys "grunt test" C-m
 
-tmux select-pane -t 0
-tmux send-keys "cd /vagrant/src/webclient" C-m
-tmux send-keys "grunt serve" C-m
+    tmux select-pane -t 2
+    tmux send-keys "cd /vagrant/src/webclient" C-m
 
-tmux set-option -g mouse-select-pane on
-tmux set-option -g mouse-select-window on
-tmux set-window-option -g mode-mouse on
+    tmux select-pane -t 0
+    tmux send-keys "cd /vagrant/src/webclient" C-m
+    tmux send-keys "grunt serve" C-m
 
-tmux select-pane -t 2
+    tmux set-option -g mouse-select-pane on
+    tmux set-option -g mouse-select-window on
+    tmux set-window-option -g mode-mouse on
 
-# Attach to session
-tmux -2 attach-session -t $SESSION
+    tmux select-pane -t 2
+
+    # Attach to session
+    tmux -2 attach-session -t $SESSION
+fi
