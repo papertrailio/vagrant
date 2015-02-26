@@ -8,7 +8,6 @@ sudo apt-get install git -y
 sudo apt-get install nodejs npm nodejs-legacy -y
 
 sudo npm update
-sudo npm -g npm
 sudo npm install -g
 #sudo npm install -g grunt --save-dev
 #sudo npm install -g grunt-cli --save-dev
