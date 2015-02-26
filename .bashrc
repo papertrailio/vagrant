@@ -106,4 +106,4 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-cd /vagrant/src/api-webclient
+cd /vagrant/src/webclient
