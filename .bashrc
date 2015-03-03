@@ -115,15 +115,15 @@ if [[ ! $TERM =~ screen ]]; then
 
     tmux new-window -t $SESSION:1 -n 'Grunt'
     tmux split-window -v
-    tmux select-pane -t 0
-    tmux split-window -h
+    #tmux select-pane -t 0
+    #tmux split-window -h
 
     tmux select-pane -t 1
     tmux send-keys "cd /vagrant/src/webclient" C-m
     tmux send-keys "grunt test" C-m
 
-    tmux select-pane -t 2
-    tmux send-keys "cd /vagrant/src/webclient" C-m
+    #tmux select-pane -t 2
+    #tmux send-keys "cd /vagrant/src/webclient" C-m
 
     tmux select-pane -t 0
     tmux send-keys "cd /vagrant/src/webclient" C-m
@@ -138,3 +138,4 @@ if [[ ! $TERM =~ screen ]]; then
     # Attach to session
     tmux -2 attach-session -t $SESSION
 fi
+
